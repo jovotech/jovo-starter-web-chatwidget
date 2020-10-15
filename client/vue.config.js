@@ -1,5 +1,8 @@
 module.exports = {
   parallel: false,
+  chainWebpack: (config) => {
+    config.resolve.symlinks(false)
+  },
   css: {
     loaderOptions: {
       postcss: {

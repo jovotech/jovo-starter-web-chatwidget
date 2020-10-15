@@ -1,24 +1,22 @@
 # jovo-starter-web-chatwidget
 
-## Project setup
-```
-npm install
-```
+## Installation
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+Install the dependencies in both packages:\
+Run `npm i` or `npm install` in `app` and `client`.
 
-### Compiles and minifies for production
-```
-npm run build
-```
+## Usage
 
-### Lints and fixes files
-```
-npm run lint
-```
+1. Start the Jovo-App in `app`:
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+   ```
+   npm run start:dev
+   ```
+
+2. Start the Web-App in `client`:
+
+   ```
+   npm run serve
+   ```
+
+The Web-App is now running at http://localhost:8080 and ready to be used.
