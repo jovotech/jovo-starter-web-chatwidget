@@ -1,13 +1,13 @@
 <template>
-  <div>
-    <div class="flex flex-col space-y-4 space-x-1">
+  <div class="flex flex-col h-64">
+    <div class="flex-grow flex flex-col space-y-4 space-x-1 overflow-y-auto">
       <chat-widget-conversation-part
         v-for="(part, index) in conversation.parts"
         :key="index"
         :part="part"
       />
     </div>
-    <div>
+    <div class="mt-auto flex justify-end">
       <chat-widget-conversation-quick-reply v-for="(quickReply, index) in conversation.quickReplies" :key="index" :quick-reply="quickReply" />
     </div>
   </div>

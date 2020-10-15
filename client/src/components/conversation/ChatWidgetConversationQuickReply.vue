@@ -1,6 +1,6 @@
 <template>
-  <div>
-
+  <div class="inline bg-quickReply rounded-2xl text-blue-600 border border-blue-600 cursor-pointer py-1 px-2">
+    {{quickReply}}
   </div>
 </template>
 
