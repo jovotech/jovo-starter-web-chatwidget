@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import App from './App.vue';
+
 import JovoWebClientVue, { JovoWebClientVueConfig } from 'jovo-client-web-vue';
 
 Vue.config.productionTip = false;

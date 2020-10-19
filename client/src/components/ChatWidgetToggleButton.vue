@@ -1,7 +1,7 @@
 <template>
   <button
     class="bg-primary w-24 h-24 flex items-center justify-center rounded-full text-white focus:outline-none"
-    @click="$emit('toggle')"
+    @click="$emit('click')"
   >
     <transition
       mode="out-in"

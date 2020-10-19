@@ -1,7 +1,12 @@
 <template>
-  <div class="max-w-half p-2 inline shadow-lg" :class="[
-      isRequest ? 'bg-primary self-end text-right text-white rounded-t-xl rounded-bl-xl' : 'bg-white rounded-b-xl rounded-tr-xl'
-  ]">
+  <div
+    class="max-w-half p-2 inline shadow-lg"
+    :class="[
+      isRequest
+        ? 'bg-primary self-end text-right text-white rounded-t-xl rounded-bl-xl'
+        : 'bg-white rounded-b-xl rounded-tr-xl',
+    ]"
+  >
     <p class="whitespace-pre-wrap" v-text="part.value"></p>
   </div>
 </template>
@@ -22,5 +27,3 @@ export default class ChatWidgetConversationPart extends Vue {
   }
 }
 </script>
-
-<style scoped lang="scss"></style>

@@ -1,8 +1,8 @@
 export type ConversationPartType = 'request' | 'response';
-export type ConversationPartSubType = 'text';
+export type ConversationPartSubType = 'text' | 'audio';
 
 export interface ConversationPart {
-  type:  ConversationPartType;
+  type: ConversationPartType;
   subType: ConversationPartSubType;
   value: string;
 }
