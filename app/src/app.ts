@@ -16,8 +16,8 @@ app.use(webPlatform, new JovoDebugger(), new FileDb());
 
 webPlatform.use(
   new LexSlu({
-    botAlias: 'WebTest',
-    botName: 'WebAssistantTest',
+    botAlias: process.env.LEX_BOT_ALIAS,
+    botName: process.env.LEX_BOT_NAME,
   }),
 );
 
