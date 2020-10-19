@@ -1,15 +1,34 @@
 <template>
   <div class="p-8 bg-primary text-white">
-    <h3 class="text-base font-bold mb-1">Jovo FAQ Bot</h3>
+    <div class="flex items-center space-x-1  mb-1">
+      <h3 class="text-base font-bold">Jovo FAQ Bot</h3>
+      <component
+        :is="isOutputtingSound ? 'volume-2-icon' : 'volume-icon'"
+        size="20"
+        stroke-width="1.5"
+      />
+    </div>
     <p class="text-sm font-light">This is an automated bot trained by the Jovo team.</p>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, InjectReactive, Vue } from 'vue-property-decorator';
+import VolumeIcon from 'vue-feather-icons/icons/VolumeIcon';
+import Volume2Icon from 'vue-feather-icons/icons/Volume2Icon';
 
 @Component({
   name: 'chat-widget-window-header',
+  components: {
+    VolumeIcon,
+    Volume2Icon,
+  },
 })
-export default class ChatWidgetWindowHeader extends Vue {}
+export default class ChatWidgetWindowHeader extends Vue {
+  @InjectReactive({
+    from: 'isOutputtingSound',
+    default: false,
+  })
+  isOutputtingSound!: boolean;
+}
 </script>

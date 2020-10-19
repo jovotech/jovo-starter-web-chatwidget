@@ -15,8 +15,14 @@
 <script lang="ts">
 import ChatWidgetToggleButton from '@/components/ChatWidgetToggleButton.vue';
 import ChatWidgetWindow from '@/components/window/ChatWidgetWindow.vue';
-import { AudioRecorderEvent, RequestType, SpeechRecognizerEvent } from 'jovo-client-web-vue';
-import {Component, ProvideReactive, Vue} from 'vue-property-decorator';
+import {
+  AudioRecorderEvent,
+  RequestType,
+  SpeechRecognizerEvent,
+  AudioPlayerEvent,
+  SpeechSynthesizerEvent,
+} from 'jovo-client-web-vue';
+import { Component, ProvideReactive, Vue } from 'vue-property-decorator';
 
 @Component({
   name: 'chat-widget',
@@ -29,6 +35,9 @@ export default class ChatWidget extends Vue {
   @ProvideReactive('isCapturingInput')
   isCapturingInput = false;
 
+  @ProvideReactive('isOutputtingSound')
+  isOutputtingSound = false;
+
   mounted() {
     this.$client.$audioRecorder.on(AudioRecorderEvent.Start, this.onInputCapturingStart);
     this.$client.$audioRecorder.on(AudioRecorderEvent.Stop, this.onInputCapturingEnd);
@@ -36,6 +45,18 @@ export default class ChatWidget extends Vue {
 
     this.$client.$speechRecognizer.on(SpeechRecognizerEvent.Start, this.onInputCapturingStart);
     this.$client.$speechRecognizer.on(SpeechRecognizerEvent.End, this.onInputCapturingEnd);
+
+    this.$client.$audioPlayer.on(AudioPlayerEvent.Play, this.onSoundOutputtingStart);
+    this.$client.$audioPlayer.on(AudioPlayerEvent.Resume, this.onSoundOutputtingStart);
+    this.$client.$audioPlayer.on(AudioPlayerEvent.Pause, this.onSoundOutputtingEnd);
+    this.$client.$audioPlayer.on(AudioPlayerEvent.Stop, this.onSoundOutputtingEnd);
+    this.$client.$audioPlayer.on(AudioPlayerEvent.End, this.onSoundOutputtingEnd);
+
+    this.$client.$speechSynthesizer.on(SpeechSynthesizerEvent.Speak, this.onSoundOutputtingStart);
+    this.$client.$speechSynthesizer.on(SpeechSynthesizerEvent.Resume, this.onSoundOutputtingStart);
+    this.$client.$speechSynthesizer.on(SpeechSynthesizerEvent.Pause, this.onSoundOutputtingEnd);
+    this.$client.$speechSynthesizer.on(SpeechSynthesizerEvent.Stop, this.onSoundOutputtingEnd);
+    this.$client.$speechSynthesizer.on(SpeechSynthesizerEvent.End, this.onSoundOutputtingEnd);
   }
 
   beforeDestroy() {
@@ -45,6 +66,18 @@ export default class ChatWidget extends Vue {
 
     this.$client.$speechRecognizer.off(SpeechRecognizerEvent.Start, this.onInputCapturingStart);
     this.$client.$speechRecognizer.off(SpeechRecognizerEvent.End, this.onInputCapturingEnd);
+
+    this.$client.$audioPlayer.off(AudioPlayerEvent.Play, this.onSoundOutputtingStart);
+    this.$client.$audioPlayer.off(AudioPlayerEvent.Resume, this.onSoundOutputtingStart);
+    this.$client.$audioPlayer.off(AudioPlayerEvent.Pause, this.onSoundOutputtingEnd);
+    this.$client.$audioPlayer.off(AudioPlayerEvent.Stop, this.onSoundOutputtingEnd);
+    this.$client.$audioPlayer.off(AudioPlayerEvent.End, this.onSoundOutputtingEnd);
+
+    this.$client.$speechSynthesizer.off(SpeechSynthesizerEvent.Speak, this.onSoundOutputtingStart);
+    this.$client.$speechSynthesizer.off(SpeechSynthesizerEvent.Resume, this.onSoundOutputtingStart);
+    this.$client.$speechSynthesizer.off(SpeechSynthesizerEvent.Pause, this.onSoundOutputtingEnd);
+    this.$client.$speechSynthesizer.off(SpeechSynthesizerEvent.Stop, this.onSoundOutputtingEnd);
+    this.$client.$speechSynthesizer.off(SpeechSynthesizerEvent.End, this.onSoundOutputtingEnd);
   }
 
   async handleToggle() {
@@ -54,6 +87,14 @@ export default class ChatWidget extends Vue {
       await this.$client.createRequest({ type: RequestType.Launch }).send();
     }
     this.isVisible = !this.isVisible;
+  }
+
+  private onSoundOutputtingStart() {
+    this.isOutputtingSound = true;
+  }
+
+  private onSoundOutputtingEnd() {
+    this.isOutputtingSound = false;
   }
 
   private onInputCapturingStart() {
