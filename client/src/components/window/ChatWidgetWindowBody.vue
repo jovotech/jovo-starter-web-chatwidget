@@ -1,5 +1,5 @@
 <template>
-  <div class="p-6 bg-windowBody">
+  <div class="bg-windowBody">
     <chat-widget-conversation />
   </div>
 </template>

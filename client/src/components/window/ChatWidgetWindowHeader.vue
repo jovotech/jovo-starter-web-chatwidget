@@ -1,6 +1,6 @@
 <template>
   <div class="p-8 bg-primary text-white">
-    <div class="flex items-center space-x-1  mb-1">
+    <div class="flex items-center space-x-1 mb-1">
       <h3 class="text-base font-bold">Jovo FAQ Bot</h3>
       <component
         :is="isOutputtingSound ? 'volume-2-icon' : 'volume-icon'"

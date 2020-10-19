@@ -1,5 +1,5 @@
 <template>
-  <div class="border rounded-xl">
+  <div class="border rounded-xl w-window">
     <chat-widget-window-header class="rounded-t-xl border-b" />
     <chat-widget-window-body />
     <chat-widget-window-footer class="rounded-b-xl border-t" />

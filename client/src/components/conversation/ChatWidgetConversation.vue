@@ -1,18 +1,27 @@
 <template>
   <div class="flex flex-col h-64">
-    <div ref="partContainer" class="flex-grow flex flex-col space-y-4 space-x-1 overflow-y-auto">
+    <div
+      ref="partContainer"
+      class="flex-grow flex flex-col space-y-4 space-x-1 overflow-y-auto px-6 py-4"
+    >
       <chat-widget-conversation-part
         v-for="(part, index) in conversation.parts"
         :key="index"
         :part="part"
       />
     </div>
-    <div class="mt-auto flex flex-shrink-0 items-end justify-end space-x-1 h-10">
-      <chat-widget-conversation-quick-reply
-        v-for="(quickReply, index) in conversation.quickReplies"
-        :key="index"
-        :quick-reply="quickReply"
-      />
+    <div class="flex-shrink-0 px-6">
+      <div
+        ref="quickReplyContainer"
+        class="flex items-center space-x-1 overflow-x-auto"
+        @wheel.prevent="handleQuickReplyScroll"
+      >
+        <chat-widget-conversation-quick-reply
+          v-for="(quickReply, index) in conversation.quickReplies"
+          :key="index"
+          :quick-reply="quickReply"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -45,8 +54,13 @@ export default class ChatWidgetConversation extends Vue {
 
   includeOutput = false;
 
+  handleQuickReplyScroll(event: WheelEvent) {
+    (this.$refs.quickReplyContainer as HTMLElement).scrollBy({
+      left: event.deltaY,
+    });
+  }
+
   mounted() {
-    console.log('mount Conversation');
     this.$client.on(ClientEvent.Request, this.onRequest);
     this.$client.on(ClientEvent.Reprompt, this.onReprompt);
     this.$client.on(ClientEvent.Action, this.onAction);
@@ -86,7 +100,7 @@ export default class ChatWidgetConversation extends Vue {
     }
   }
 
-  @Watch('conversation.parts')
+  @Watch('conversation', { deep: true })
   async onPartsChange() {
     // wait for dom changes
     await this.$nextTick();

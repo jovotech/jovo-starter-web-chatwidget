@@ -20,7 +20,10 @@ module.exports = {
         primary: '#434A65',
       },
       maxWidth: {
-        half: '50%'
+        half: '50%',
+      },
+      width: {
+        window: '25rem',
       },
     },
   },
