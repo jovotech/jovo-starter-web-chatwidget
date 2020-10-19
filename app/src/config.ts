@@ -2,8 +2,13 @@
 // APP CONFIGURATION
 // ------------------------------------------------------------------
 
-const config = {
-  logging: true,
+import { config } from 'jovo-framework';
+
+export = config({
+  logging: {
+    request: true,
+    styling: true,
+  },
 
   intentMap: {
     'AMAZON.StopIntent': 'END',
@@ -14,6 +19,4 @@ const config = {
       pathToFile: './../../db/db.json',
     },
   },
-};
-
-export = config;
+});

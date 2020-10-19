@@ -1,8 +1,8 @@
 import { App } from 'jovo-framework';
-import { Alexa } from 'jovo-platform-alexa';
+import { WebPlatform } from 'jovo-platform-web';
 import { JovoDebugger } from 'jovo-plugin-debugger';
 import { FileDb } from 'jovo-db-filedb';
-import { GoogleAssistant } from 'jovo-platform-googleassistant';
+import { LexSlu } from 'jovo-slu-lex';
 
 // ------------------------------------------------------------------
 // APP INITIALIZATION
@@ -10,11 +10,15 @@ import { GoogleAssistant } from 'jovo-platform-googleassistant';
 
 const app = new App();
 
-app.use(
-  new Alexa(),
-  new GoogleAssistant(),
-  new JovoDebugger(),
-  new FileDb(),
+const webPlatform = new WebPlatform();
+
+app.use(webPlatform, new JovoDebugger(), new FileDb());
+
+webPlatform.use(
+  new LexSlu({
+    botAlias: 'WebTest',
+    botName: 'WebAssistantTest',
+  }),
 );
 
 // ------------------------------------------------------------------
@@ -28,6 +32,7 @@ app.setHandler({
 
   HelloWorldIntent() {
     this.ask("Hello World! What's your name?", 'Please tell me your name.');
+    this.$webApp?.showQuickReplies(['John', 'Eva', 'Max']);
   },
 
   MyNameIsIntent() {
