@@ -7,6 +7,7 @@
   "dependencies": {
     "jovo-db-filedb": "^3.1.4",
     "jovo-slu-lex": "^3.1.4",
+    "jovo-tts-polly": "^3.1.4",
     "jovo-framework": "^3.1.4",
     "jovo-platform-web": "^3.1.4",
     "jovo-plugin-debugger": "^3.1.4"
