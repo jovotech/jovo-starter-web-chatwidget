@@ -1,8 +1,9 @@
 <template>
-  <div class="flex flex-col h-64">
+  <div class="flex flex-col h-64" @mouseenter="isHovered = true" @mouseleave="isHovered = false">
     <div
       ref="partContainer"
-      class="flex-grow flex flex-col space-y-4 space-x-1 overflow-y-auto px-6 py-4"
+      class="flex-grow flex flex-col space-y-4 space-x-1 overflow-y-scroll px-6 py-4"
+      :class="[isHovered ? 'scrollbar' : 'scrollbar-invisible']"
     >
       <chat-widget-conversation-part
         v-for="(part, index) in conversation.parts"
@@ -14,6 +15,7 @@
       <div
         ref="quickReplyContainer"
         class="flex items-center space-x-1 overflow-x-auto"
+        :class="[isHovered ? 'scrollbar' : 'scrollbar-invisible']"
         @wheel.prevent="handleQuickReplyScroll"
       >
         <chat-widget-conversation-quick-reply
@@ -40,7 +42,7 @@ import {
   ActionType,
   QuickReplyAction,
 } from 'jovo-client-web-vue';
-import { Component, Vue, Watch } from 'vue-property-decorator';
+import { Component, InjectReactive, Vue, Watch } from 'vue-property-decorator';
 
 @Component({
   name: 'chat-widget-conversation',
@@ -53,6 +55,8 @@ export default class ChatWidgetConversation extends Vue {
   };
 
   includeOutput = false;
+
+  isHovered = false;
 
   handleQuickReplyScroll(event: WheelEvent) {
     (this.$refs.quickReplyContainer as HTMLElement).scrollBy({

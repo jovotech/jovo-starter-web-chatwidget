@@ -10,7 +10,7 @@
 import ChatWidgetWindowBody from '@/components/window/ChatWidgetWindowBody.vue';
 import ChatWidgetWindowFooter from '@/components/window/ChatWidgetWindowFooter.vue';
 import ChatWidgetWindowHeader from '@/components/window/ChatWidgetWindowHeader.vue';
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, ProvideReactive, Vue } from 'vue-property-decorator';
 
 @Component({
   name: 'chat-widget-window',

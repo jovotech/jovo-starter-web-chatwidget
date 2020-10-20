@@ -9,14 +9,16 @@
     <mic-icon
       class="cursor-pointer"
       :class="[
-        isCapturingInput ? 'text-red-800 hover:text-red-600' : 'text-gray-600 hover:text-gray-800',
+        $client.isRecordingInput
+          ? 'text-red-800 hover:text-red-600'
+          : 'text-gray-600 hover:text-gray-800',
       ]"
       size="16"
       stroke-width="1"
       @click.prevent="
-        isCapturingInput ? $client.stopInputCapturing() : $client.startInputCapturing()
+        $client.isRecordingInput ? $client.stopInputRecording() : $client.startInputRecording()
       "
-      @contextmenu.prevent="isCapturingInput ? $client.abortInputCapturing() : undefined"
+      @contextmenu.prevent="$client.isRecordingInput ? $client.abortInputRecording() : undefined"
     />
   </div>
 </template>
@@ -24,7 +26,7 @@
 <script lang="ts">
 import { RequestType } from 'jovo-client-web-vue';
 import MicIcon from 'vue-feather-icons/icons/MicIcon';
-import { Component, InjectReactive, Vue } from 'vue-property-decorator';
+import { Component, Vue } from 'vue-property-decorator';
 
 @Component({
   name: 'chat-widget-window-footer',
@@ -34,12 +36,6 @@ import { Component, InjectReactive, Vue } from 'vue-property-decorator';
 })
 export default class ChatWidgetWindowFooter extends Vue {
   inputValue = '';
-
-  @InjectReactive({
-    from: 'isCapturingInput',
-    default: false,
-  })
-  isCapturingInput!: boolean;
 
   async sendText() {
     if (!this.inputValue) return;

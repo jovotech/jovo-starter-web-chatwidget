@@ -1,12 +1,11 @@
+import JovoWebClientVue, { JovoWebClientVueConfig, Client } from 'jovo-client-web-vue';
 import Vue from 'vue';
 import App from './App.vue';
-
-import JovoWebClientVue, { JovoWebClientVueConfig } from 'jovo-client-web-vue';
 
 Vue.config.productionTip = false;
 
 Vue.use<JovoWebClientVueConfig>(JovoWebClientVue, {
-  url: `https://webhook.jovo.cloud/<id>`,
+  url: `https://webhook.jovo.cloud/max-ripper`,
   client: {},
 });
 
