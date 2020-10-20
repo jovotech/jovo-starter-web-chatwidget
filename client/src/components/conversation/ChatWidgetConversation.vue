@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col h-64" @mouseenter="isHovered = true" @mouseleave="isHovered = false">
+  <div class="flex flex-col h-72" @mouseenter="isHovered = true" @mouseleave="isHovered = false">
     <div
       ref="partContainer"
       class="flex-grow flex flex-col space-y-4 space-x-1 overflow-y-scroll px-6 py-4"
@@ -11,18 +11,25 @@
         :part="part"
       />
     </div>
-    <div class="flex-shrink-0 px-6">
+    <div class="flex-shrink-0">
       <div
         ref="quickReplyContainer"
-        class="flex items-center space-x-1 overflow-x-auto"
+        class="flex items-center space-x-2 overflow-x-auto"
         :class="[isHovered ? 'scrollbar' : 'scrollbar-invisible']"
         @wheel.prevent="handleQuickReplyScroll"
       >
-        <chat-widget-conversation-quick-reply
+        <div
           v-for="(quickReply, index) in conversation.quickReplies"
           :key="index"
-          :quick-reply="quickReply"
-        />
+          class="flex py-2"
+        >
+          <chat-widget-conversation-quick-reply
+            :quick-reply="quickReply"
+            :class="[
+              index === 0 ? 'ml-6' : index === conversation.quickReplies.length - 1 ? 'mr-6' : '',
+            ]"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -115,11 +122,16 @@ export default class ChatWidgetConversation extends Vue {
         break;
       }
       case ActionType.Speech: {
-        const text = (action as SpeechAction).displayText || '';
+        const { plain, displayText, ssml } = action as SpeechAction;
+        const value =
+          displayText || plain || (ssml ? this.$client.$ssmlHandler.removeSSML(ssml) : undefined);
+        if (!value) {
+          return;
+        }
         this.conversation.parts.push({
           type: 'response',
           subType: 'text',
-          value: text,
+          value,
         });
         break;
       }
