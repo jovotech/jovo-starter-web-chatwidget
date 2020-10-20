@@ -5,7 +5,7 @@ import App from './App.vue';
 Vue.config.productionTip = false;
 
 Vue.use<JovoWebClientVueConfig>(JovoWebClientVue, {
-  url: `https://webhook.jovo.cloud/max-ripper`,
+  url: `https://webhook.jovo.cloud/<id>`,
   client: {},
 });
 
