@@ -34,15 +34,14 @@ import ChatWidgetConversationQuickReply from '@/components/conversation/ChatWidg
 import { Conversation } from '@/types';
 import {
   Action,
-  AudioPlayerEvent,
-  ClientEvent,
-  RequestType,
-  SpeechSynthesizerEvent,
-  WebRequest,
   ActionType,
+  ClientEvent,
   QuickReplyAction,
+  RequestType,
+  SpeechAction,
+  WebRequest,
 } from 'jovo-client-web-vue';
-import { Component, InjectReactive, Vue, Watch } from 'vue-property-decorator';
+import { Component, Vue, Watch } from 'vue-property-decorator';
 
 @Component({
   name: 'chat-widget-conversation',
@@ -53,9 +52,7 @@ export default class ChatWidgetConversation extends Vue {
     quickReplies: [],
     parts: [],
   };
-
   includeOutput = false;
-
   isHovered = false;
 
   handleQuickReplyScroll(event: WheelEvent) {
@@ -69,8 +66,6 @@ export default class ChatWidgetConversation extends Vue {
     this.$client.on(ClientEvent.Reprompt, this.onReprompt);
     this.$client.on(ClientEvent.Action, this.onAction);
     this.$client.on(ClientEvent.RepromptLimitReached, this.onRepromptLimitReached);
-    this.$client.$speechSynthesizer.on(SpeechSynthesizerEvent.Speak, this.onSpeak);
-    this.$client.$audioPlayer.on(AudioPlayerEvent.Play, this.onPlay);
   }
 
   beforeDestroy() {
@@ -78,8 +73,6 @@ export default class ChatWidgetConversation extends Vue {
     this.$client.off(ClientEvent.Reprompt, this.onReprompt);
     this.$client.off(ClientEvent.Action, this.onAction);
     this.$client.off(ClientEvent.RepromptLimitReached, this.onRepromptLimitReached);
-    this.$client.$speechSynthesizer.off(SpeechSynthesizerEvent.Speak, this.onSpeak);
-    this.$client.$audioPlayer.off(AudioPlayerEvent.Play, this.onPlay);
   }
 
   private onRequest(req: WebRequest) {
@@ -104,14 +97,6 @@ export default class ChatWidgetConversation extends Vue {
     }
   }
 
-  @Watch('conversation', { deep: true })
-  async onPartsChange() {
-    // wait for dom changes
-    await this.$nextTick();
-    const partContainer = this.$refs.partContainer as HTMLDivElement;
-    partContainer.scrollTop = partContainer.scrollHeight;
-  }
-
   private onReprompt(actions: Action[]) {
     this.includeOutput = false;
   }
@@ -122,29 +107,32 @@ export default class ChatWidgetConversation extends Vue {
 
   private onAction(action: Action) {
     if (!this.includeOutput) return;
-    if (action.type === ActionType.QuickReply) {
-      this.conversation.quickReplies = (action as QuickReplyAction).replies.map((reply) => {
-        return reply.value;
-      });
+    switch (action.type) {
+      case ActionType.QuickReply: {
+        this.conversation.quickReplies = (action as QuickReplyAction).replies.map((reply) => {
+          return reply.value;
+        });
+        break;
+      }
+      case ActionType.Speech: {
+        const text = (action as SpeechAction).displayText || '';
+        this.conversation.parts.push({
+          type: 'response',
+          subType: 'text',
+          value: text,
+        });
+        break;
+      }
+      default:
     }
   }
 
-  private onPlay(src: string) {
-    if (!this.includeOutput) return;
-    this.conversation.parts.push({
-      type: 'response',
-      subType: 'audio',
-      value: src,
-    });
-  }
-
-  private onSpeak(utterance: SpeechSynthesisUtterance) {
-    if (!this.includeOutput) return;
-    this.conversation.parts.push({
-      type: 'response',
-      subType: 'text',
-      value: utterance.text,
-    });
+  @Watch('conversation', { deep: true })
+  private async onPartsChange() {
+    // wait for dom changes
+    await this.$nextTick();
+    const partContainer = this.$refs.partContainer as HTMLDivElement;
+    partContainer.scrollTop = partContainer.scrollHeight;
   }
 }
 </script>
