@@ -17,9 +17,6 @@ export default class App extends Vue {}
 <style>
 @import 'assets/css/theme.css';
 
-body {
-}
-
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

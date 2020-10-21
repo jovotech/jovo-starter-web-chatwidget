@@ -1,5 +1,5 @@
 <template>
-  <div class="fixed" style="bottom: 2rem; right: 2rem;">
+  <div class="fixed right-2 bottom-2">
     <transition
       enter-active-class="transition-opacity duration-300"
       leave-active-class="transition-opacity duration-300"
@@ -31,10 +31,6 @@ import { Component, ProvideReactive, Vue } from 'vue-property-decorator';
 export default class ChatWidget extends Vue {
   isVisible = false;
   hasInitialized = false;
-
-  mounted() {
-    console.log(this.$client);
-  }
 
   async handleToggle() {
     if (!this.hasInitialized) {

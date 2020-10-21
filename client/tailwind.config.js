@@ -11,6 +11,9 @@ module.exports = {
       sans: ['Roboto', 'sans-serif'],
     },
     extend: {
+      inset: {
+        '2': '2rem',
+      },
       spacing: {
         '72': '18rem',
       },
