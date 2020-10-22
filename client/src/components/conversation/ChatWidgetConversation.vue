@@ -14,7 +14,7 @@
     <div class="flex-shrink-0">
       <div
         ref="quickReplyContainer"
-        class="flex items-center space-x-2 overflow-x-auto"
+        class="flex items-center justify-end space-x-2 overflow-x-auto"
         :class="[isHovered ? 'scrollbar' : 'scrollbar-invisible']"
         @wheel.prevent="handleQuickReplyScroll"
       >
