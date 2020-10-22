@@ -14,7 +14,7 @@
     <div class="flex-shrink-0">
       <div
         ref="quickReplyContainer"
-        class="flex items-center justify-end space-x-2 overflow-x-auto"
+        class="flex items-center space-x-2 overflow-x-auto"
         :class="[isHovered ? 'scrollbar' : 'scrollbar-invisible']"
         @wheel.prevent="handleQuickReplyScroll"
       >
@@ -22,6 +22,7 @@
           v-for="(quickReply, index) in conversation.quickReplies"
           :key="index"
           class="flex py-2"
+          :class="[index === 0 ? 'ml-auto' : '']"
         >
           <chat-widget-conversation-quick-reply
             :quick-reply="quickReply"
