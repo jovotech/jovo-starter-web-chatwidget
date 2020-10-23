@@ -6,20 +6,6 @@
       placeholder="Type something..."
       @keypress.enter.exact="sendText"
     />
-    <mic-icon
-      class="cursor-pointer"
-      :class="[
-        $client.isRecordingInput
-          ? 'text-red-800 hover:text-red-600'
-          : 'text-gray-600 hover:text-gray-800',
-      ]"
-      size="16"
-      stroke-width="1"
-      @click.prevent="
-        $client.isRecordingInput ? $client.stopInputRecording() : $client.startInputRecording()
-      "
-      @contextmenu.prevent="$client.isRecordingInput ? $client.abortInputRecording() : undefined"
-    />
   </div>
 </template>
 
