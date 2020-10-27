@@ -11,16 +11,16 @@
 
 <script lang="ts">
 import { RequestType } from 'jovo-client-web-vue';
-import MicIcon from 'vue-feather-icons/icons/MicIcon';
+import SendIcon from 'vue-feather-icons/icons/SendIcon';
 import { Component, Vue } from 'vue-property-decorator';
 
 @Component({
-  name: 'chat-widget-window-footer',
+  name: 'chat-widget-window-input',
   components: {
-    MicIcon,
+    SendIcon,
   },
 })
-export default class ChatWidgetWindowFooter extends Vue {
+export default class ChatWidgetWindowInput extends Vue {
   inputValue = '';
 
   async sendText() {

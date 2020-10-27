@@ -15,13 +15,7 @@
 <script lang="ts">
 import ChatWidgetToggleButton from '@/components/ChatWidgetToggleButton.vue';
 import ChatWidgetWindow from '@/components/window/ChatWidgetWindow.vue';
-import {
-  AudioRecorderEvent,
-  RequestType,
-  SpeechRecognizerEvent,
-  AudioPlayerEvent,
-  SpeechSynthesizerEvent,
-} from 'jovo-client-web-vue';
+import { RequestType, ClientEvent, ActionType, Action } from 'jovo-client-web-vue';
 import { Component, ProvideReactive, Vue } from 'vue-property-decorator';
 
 @Component({
