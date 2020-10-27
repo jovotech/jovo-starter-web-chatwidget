@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col border border-gray-400 rounded-xl w-window shadow-xl">
+  <div class="flex flex-col border border-gray-400 rounded-xl w-72 sm:w-96 shadow-xl">
     <chat-widget-window-header class="flex-shrink-0 rounded-t-xl border-b" />
     <chat-widget-window-body class="flex-1 overflow-y-auto" />
     <chat-widget-window-bottom ref="bottom" class="flex-shrink-0 rounded-b-xl border-t" />

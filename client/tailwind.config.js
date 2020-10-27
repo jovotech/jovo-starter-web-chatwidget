@@ -17,6 +17,8 @@ module.exports = {
       spacing: {
         '72': '18rem',
         '80': '20rem',
+        '88': '22rem',
+        '96': '24rem',
       },
       backgroundColor: {
         primary: '#434A65',
@@ -32,9 +34,6 @@ module.exports = {
         '1/2': '50%',
         '3/4': '75%',
         'full': '100%',
-      },
-      width: {
-        window: '25rem',
       },
     },
   },
