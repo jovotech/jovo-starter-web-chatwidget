@@ -23,12 +23,12 @@ import SendIcon from 'vue-feather-icons/icons/SendIcon';
 import { Component, Vue } from 'vue-property-decorator';
 
 @Component({
-  name: 'chat-widget-window-input',
+  name: 'chat-widget-window-bottom',
   components: {
     SendIcon,
   },
 })
-export default class ChatWidgetWindowInput extends Vue {
+export default class ChatWidgetWindowBottom extends Vue {
   inputValue = '';
 
   async sendText() {
