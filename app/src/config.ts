@@ -7,11 +7,8 @@ import { config } from 'jovo-framework';
 export = config({
   logging: {
     request: true,
+    response: true,
     styling: true,
-  },
-
-  intentMap: {
-    'AMAZON.StopIntent': 'END',
   },
 
   db: {
