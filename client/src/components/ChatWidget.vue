@@ -26,6 +26,10 @@ export default class ChatWidget extends Vue {
   isVisible = false;
   hasInitialized = false;
 
+  async mounted() {
+    this.$client.on(ClientEvent.Action, this.onAction);
+  }
+
   async handleToggle() {
     if (!this.hasInitialized) {
       await this.$client.initialize();
@@ -33,6 +37,20 @@ export default class ChatWidget extends Vue {
       await this.$client.createRequest({ type: RequestType.Launch }).send();
     }
     this.isVisible = !this.isVisible;
+  }
+
+  private onAction(action: Action) {
+    if (action.type === ActionType.Custom) {
+      switch (action.command) {
+        case 'redirect': {
+          setTimeout(()=>{
+            window.open(action.value);
+          },800);
+          break;
+        }
+        default:
+      }
+    }
   }
 }
 </script>
