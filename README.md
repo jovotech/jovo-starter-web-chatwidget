@@ -1,36 +1,17 @@
-# jovo-starter-web-chatwidget
+# Jovo Web Starter: Chat Widget
 
-## Installation
+Fully customizable open source chat widget that can be integrated into your web app or website.
 
-1. Install the dependencies in both packages:
+This repository contains:
+* `app`: Backend logic built with the [Jovo Framework](https://github.com/jovotech/jovo-framework) using its [Web Platform integration](https://github.com/jovotech/jovo-framework/tree/master/jovo-platforms/jovo-platform-web).
+* `client`: Frontend built with Vue.js and Tailwind CSS, communicating with the backend using the [Jovo Web Client for Vue.js](https://github.com/jovotech/jovo-framework/tree/master/jovo-clients/jovo-client-web-vue).
 
-   Run `npm i` or `npm install` in `app` and `client`.
+## Getting started
 
-2. Prepare the Client:
+1. Run `npm install`. This will install the dependencies in both `app` and `client`
 
-   Set the `url` in `client/src/main.ts` to the url of your endpoint.
+2. Go into the `client` directory and run `npm run serve` to start the frontend
 
-3. Prepare the App:
+3. Go into the `app` directory and run `jovo run` to start the backend
 
-   The [WebPlatform](https://www.jovo.tech/marketplace/jovo-platform-web) itself does not have any ASR-, or NLU-capabilities, instead other integrations take care of these tasks.\
-   For this starter, [LexSlu](https://www.jovo.tech/marketplace/jovo-slu-lex) was chosen because it handles both ASR and NLU.
-   You can choose any other integration(s) to handle ASR and NLU.\
-   Visit the [Jovo Marketplace](https://www.jovo.tech/marketplace) for more information.
-
-   > If you decide to use LexSlu, you will have to provide a name and an alias of the Lex-bot, as well as Amazon-credentials.
-
-## Usage
-
-1. Start the Jovo-App in `app`:
-
-   ```
-   npm run start:dev
-   ```
-
-2. Start the Web-App in `client`:
-
-   ```
-   npm run serve
-   ```
-
-The Web-App is now running at http://localhost:8080 and ready to be used.
+4. Open the starter in your browser `localhost:8080`
