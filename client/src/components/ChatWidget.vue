@@ -40,7 +40,9 @@ export default class ChatWidget extends Vue {
     }
     this.isVisible = !this.isVisible;
     await this.$nextTick();
-    (this.$refs.window as any).focusTextInput();
+    if (this.isVisible) {
+      (this.$refs.window as any).focusTextInput();
+    }
   }
 
   private onAction(action: Action) {

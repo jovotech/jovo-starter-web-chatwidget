@@ -13,7 +13,7 @@
 </template>
 
 <script lang="ts">
-import { RequestType } from 'jovo-client-web-vue';
+import { RequestType, ClientEvent, WebRequest } from 'jovo-client-web-vue';
 import SendIcon from 'vue-feather-icons/icons/SendIcon';
 import { Component, Vue } from 'vue-property-decorator';
 
@@ -26,6 +26,14 @@ import { Component, Vue } from 'vue-property-decorator';
 export default class ChatWidgetWindowBottom extends Vue {
   inputValue = '';
 
+  mounted() {
+    this.$client.on(ClientEvent.Request, this.onRequest);
+  }
+
+  beforeDestroy() {
+    this.$client.off(ClientEvent.Request, this.onRequest);
+  }
+
   focusTextInput() {
     (this.$refs.textInput as HTMLInputElement).focus();
   }
@@ -34,8 +42,11 @@ export default class ChatWidgetWindowBottom extends Vue {
     if (!this.inputValue) return;
     const text = this.inputValue;
     this.inputValue = '';
-    (this.$refs.textInput as HTMLElement).focus();
     return this.$client.createRequest({ type: RequestType.Text, body: { text } }).send();
+  }
+
+  private onRequest(req: WebRequest) {
+    this.focusTextInput();
   }
 }
 </script>
