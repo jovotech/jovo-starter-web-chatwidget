@@ -6,7 +6,7 @@
       enter-class="opacity-0"
       leave-to-class="opacity-0"
     >
-      <chat-widget-window v-show="isVisible" class="mb-6 flex-1 overflow-y-hidden" />
+      <chat-widget-window ref="window" v-show="isVisible" class="mb-6 flex-1 overflow-y-hidden" />
     </transition>
     <chat-widget-toggle-button
       class="ml-auto flex-shrink-0"
@@ -28,19 +28,19 @@ import { Component, ProvideReactive, Vue } from 'vue-property-decorator';
 })
 export default class ChatWidget extends Vue {
   isVisible = false;
-  hasInitialized = false;
 
   async mounted() {
     this.$client.on(ClientEvent.Action, this.onAction);
   }
 
   async handleToggle() {
-    if (!this.hasInitialized) {
+    if (!this.$client.isInitialized) {
       await this.$client.initialize();
-      this.hasInitialized = true;
       await this.$client.createRequest({ type: RequestType.Launch }).send();
     }
     this.isVisible = !this.isVisible;
+    await this.$nextTick();
+    (this.$refs.window as any).focusTextInput();
   }
 
   private onAction(action: Action) {

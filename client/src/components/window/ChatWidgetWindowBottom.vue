@@ -8,12 +8,7 @@
       @keypress.enter.exact="sendText"
       autofocus
     />
-    <send-icon
-      class="cursor-pointer"
-      size="20"
-      stroke-width="1"
-      @click="sendText"
-    />
+    <send-icon class="cursor-pointer" size="20" stroke-width="1" @click="sendText" />
   </div>
 </template>
 
@@ -30,6 +25,10 @@ import { Component, Vue } from 'vue-property-decorator';
 })
 export default class ChatWidgetWindowBottom extends Vue {
   inputValue = '';
+
+  focusTextInput() {
+    (this.$refs.textInput as HTMLInputElement).focus();
+  }
 
   async sendText() {
     if (!this.inputValue) return;
