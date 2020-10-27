@@ -1,7 +1,7 @@
 <template>
   <div class="p-6 bg-white flex items-center">
     <input
-      ref="input"
+      ref="textInput"
       v-model="inputValue"
       class="flex-grow focus:outline-none text-sm"
       placeholder="Type something and press Enter..."
@@ -35,7 +35,7 @@ export default class ChatWidgetWindowInput extends Vue {
     if (!this.inputValue) return;
     const text = this.inputValue;
     this.inputValue = '';
-    (this.$refs.input as HTMLElement).focus();
+    (this.$refs.textInput as HTMLElement).focus();
     return this.$client.createRequest({ type: RequestType.Text, body: { text } }).send();
   }
 }
