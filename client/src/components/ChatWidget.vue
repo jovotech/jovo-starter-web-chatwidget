@@ -1,14 +1,18 @@
 <template>
-  <div class="fixed right-2 bottom-2 max-h-3/4">
+  <div class="flex flex-col fixed right-2 bottom-2 max-h-3/4">
     <transition
       enter-active-class="transition-opacity duration-300"
       leave-active-class="transition-opacity duration-300"
       enter-class="opacity-0"
       leave-to-class="opacity-0"
     >
-      <chat-widget-window v-show="isVisible" class="mb-6" />
+      <chat-widget-window v-show="isVisible" class="mb-6 flex-1 overflow-y-hidden" />
     </transition>
-    <chat-widget-toggle-button class="ml-auto" :is-active="isVisible" @click="handleToggle" />
+    <chat-widget-toggle-button
+      class="ml-auto flex-shrink-0"
+      :is-active="isVisible"
+      @click="handleToggle"
+    />
   </div>
 </template>
 
@@ -43,9 +47,9 @@ export default class ChatWidget extends Vue {
     if (action.type === ActionType.Custom) {
       switch (action.command) {
         case 'redirect': {
-          setTimeout(()=>{
+          setTimeout(() => {
             window.open(action.value);
-          },800);
+          }, 800);
           break;
         }
         default:

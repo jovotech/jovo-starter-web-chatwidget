@@ -1,8 +1,8 @@
 <template>
-  <div class="flew flex-col border border-gray-400 rounded-xl w-window max-h-3/4 shadow-xl">
-    <chat-widget-window-header class="rounded-t-xl border-b" />
-    <chat-widget-window-body />
-    <chat-widget-window-bottom class="rounded-b-xl border-t" />
+  <div class="flex flex-col border border-gray-400 rounded-xl w-window shadow-xl">
+    <chat-widget-window-header class="flex-shrink-0 rounded-t-xl border-b" />
+    <chat-widget-window-body class="flex-1 overflow-y-auto" />
+    <chat-widget-window-bottom class="flex-shrink-0 rounded-b-xl border-t" />
   </div>
 </template>
 

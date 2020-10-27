@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-gray-300">
+  <div class="flex bg-gray-300">
     <chat-widget-conversation />
   </div>
 </template>
