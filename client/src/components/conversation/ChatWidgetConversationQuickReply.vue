@@ -1,6 +1,6 @@
 <template>
   <div
-    class="inline bg-quickReply rounded-2xl text-blue-600 border border-blue-600 cursor-pointer py-1 px-2 whitespace-no-wrap"
+    class="inline bg-white bg-opacity-0 hover:bg-opacity-50 rounded-2xl text-blue-600 border border-blue-600 cursor-pointer py-1 px-2 whitespace-no-wrap"
     @click="sendQuickReply"
   >
     {{ quickReply }}

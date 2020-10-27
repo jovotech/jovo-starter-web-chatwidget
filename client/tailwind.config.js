@@ -16,14 +16,22 @@ module.exports = {
       },
       spacing: {
         '72': '18rem',
+        '80': '20rem',
       },
       backgroundColor: {
-        windowBody: '#ECECEC',
-        quickReply: 'rgba(196, 196, 196, 0.3)',
         primary: '#434A65',
       },
       maxWidth: {
-        half: '50%',
+        '1/4': '25%',
+        '1/2': '50%',
+        '3/4': '75%',
+        'full': '100%',
+      },
+      maxHeight: {
+        '1/4': '25%',
+        '1/2': '50%',
+        '3/4': '75%',
+        'full': '100%',
       },
       width: {
         window: '25rem',

@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col h-72" @mouseenter="isHovered = true" @mouseleave="isHovered = false">
+  <div class="flex flex-col flex-shrink max-h-full" @mouseenter="isHovered = true" @mouseleave="isHovered = false">
     <div
       ref="partContainer"
       class="flex-grow flex flex-col space-y-4 space-x-1 overflow-y-scroll px-6 py-4"

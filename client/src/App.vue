@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" class="w-screen h-screen bg-gray-300">
     <chat-widget />
   </div>
 </template>

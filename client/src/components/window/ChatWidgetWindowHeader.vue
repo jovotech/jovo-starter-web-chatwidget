@@ -1,6 +1,6 @@
 <template>
-  <div class="p-8 bg-primary text-white">
-    <h3 class="text-base font-bold">Jovo FAQ Bot</h3>
+  <div class="px-8 py-6 bg-primary text-white">
+    <h3 class="text-base font-bold">Jovo Sample Bot</h3>
   </div>
 </template>
 

@@ -1,5 +1,5 @@
 <template>
-  <div class="fixed right-2 bottom-2">
+  <div class="fixed right-2 bottom-2 max-h-3/4">
     <transition
       enter-active-class="transition-opacity duration-300"
       leave-active-class="transition-opacity duration-300"

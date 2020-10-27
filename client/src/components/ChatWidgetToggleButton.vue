@@ -1,6 +1,6 @@
 <template>
   <button
-    class="bg-primary w-24 h-24 flex items-center justify-center rounded-full text-white focus:outline-none"
+    class="bg-primary w-16 h-16 flex items-center justify-center rounded-full text-white shadow-xl focus:outline-none"
     @click="$emit('click')"
   >
     <transition
@@ -10,8 +10,8 @@
       enter-class="opacity-0"
       leave-to-class="opacity-0"
     >
-      <message-circle-icon key="inactive" v-if="!isActive" size="32" />
-      <chevron-down-icon key="active" v-else size="32" />
+      <message-circle-icon key="inactive" v-if="!isActive" size="24" />
+      <chevron-down-icon key="active" v-else size="24" />
     </transition>
   </button>
 </template>
