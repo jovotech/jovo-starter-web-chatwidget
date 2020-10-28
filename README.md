@@ -1,30 +1,75 @@
 # Jovo Web Starter: Chat Widget
 
-Fully customizable open source chat widget for Jovo chatbots.
+Fully customizable open source chat widget that can be added to any website.
+
+Built with the [Jovo Framework](https://github.com/jovotech/jovo-framework), [Vue.js](https://github.com/vuejs/vue), and [Tailwind CSS](https://github.com/tailwindlabs/tailwindcss).
+
+Demo: [jovo.tech/demos/starter-web-chatwidget](https://www.jovo.tech/demos/starter-web-chatwidget/).
+
+![Jovo Chat Widget](./img/starter-web-chatwidget.gif)
+
+> Support Jovo by starring [our main repo](https://github.com/jovotech/jovo-framework) or joining [our Open Collective](https://opencollective.com/jovo-framework).
+
+- [Getting Started](#getting-started)
+- [How it works](#how-it-works)
+- [Customization](#customization)
+  - [Client](#client)
+  - [App](#app)
+- [About Jovo](#about-jovo)
+
+## Getting Started
+
+1.  **Download starter**
+
+    Use the Jovo CLI to create a new project based on this starter:
+
+    ```sh
+    # Install latest version of the Jovo CLI
+    $ npm i -g jovo-cli
+
+    # This will download the template and install the dependencies
+    $ jovo new my-chatwidget --template starter-web-chatwidget
+
+    $ cd my-chatwidget
+    ```
+    Alternatively, you can clone this repository and run `npm install`.
+
+
+2. **Start client (Vue.js)**
+   ```sh
+    $ cd client
+
+    # Start Vue frontend
+    $ npm run serve
+    ```
+3. **Start app (Jovo)**
+    In a new tab:
+
+    ```sh
+    $ cd app
+
+    # Start Jovo development server
+    $ jovo run
+    ```
+    The first time, `jovo run` will compile the TypeScript code. After making changes, make sure to compile with `npm run tsc` and then start the Jovo development server again.
+
+4. **Open the starter in your browser at `http://localhost:8080`.**
+
+## How it works
+
+![Jovo Web Client to App](img/jovo-web-client-to-app.png)
 
 This repository contains:
 * `app`: Backend logic built with the [Jovo Framework](https://github.com/jovotech/jovo-framework) using its [Web Platform integration](https://github.com/jovotech/jovo-framework/tree/master/jovo-platforms/jovo-platform-web).
 * `client`: Frontend built with [Vue.js](https://vuejs.org/) and [Tailwind CSS](https://tailwindcss.com/), communicating with the backend using the [Jovo Web Client for Vue.js](https://github.com/jovotech/jovo-framework/tree/master/jovo-clients/jovo-client-web-vue).
 
-![Jovo Web Client to App](img/jovo-web-client-to-app.png)
 
-> Note: For demo purposes and the ease of getting started quickly, the template uses the [Web Speech API](https://wicg.github.io/speech-api/) as an ASR, which only works on Google Chrome. To use the Web integration on other browsers, you can integrate one of our integrations of several [cloud ASRs](https://www.jovo.tech/marketplace/tag/asr).
-
-## Getting started
-
-1. Run `npm install`. This will install the dependencies in both `app` and `client`
-
-2. Go into the `client` directory and run `npm run serve` to start the frontend
-
-3. Go into the `app` directory and run `jovo run` to start the backend
-
-4. Open the starter in your browser `localhost:8080`
 
 ## Customization
 
-> For a more detailed explanation and walk-through check out our in-depth [tutorial](TODO: link to tutorial)
+The starter was built for you to have a working example as well as an entry point to get started with the Jovo Web integration.
 
-The starter was built for you to have a working example as well as an entry point to get started with the Jovo Web integration immediately. Because of that, we've tried to keep the starters as small as possible. The following documentation will help you understand how the starter is structured and which components take care of which tasks.
+The following documentation will help you understand how the starter is structured and which components take care of which tasks.
 
 ### Client
 
@@ -41,12 +86,22 @@ TODO: add links to docs and more info
 
 ### App
 
-The Jovo app the new [Jovo Web Platform integration](TODO: link) as well as [NLP.js](https://www.jovo.tech/marketplace/jovo-nlu-nlpjs) as its NLU. It implements a simple interaction where the user can be redirected to the Jovo Framework's documentation.
+The Jovo app the new [Jovo Web Platform integration](http://jovo.tech/marketplace/jovo-platform-web) as well as [NLP.js](https://www.jovo.tech/marketplace/jovo-nlu-nlpjs) as its NLU. It implements a simple interaction where the user can be redirected to the Jovo Framework's documentation.
 
 #### Language Model
 
-The language model consists of two simple intents, `HelloWorldIntent` and `YesIntent`, used to implement the sample interaction.
+The language model consists of two intents, `HelloWorldIntent` and `YesIntent`, used to implement the sample interaction.
 
 #### app.ts
 
-The `app.ts` file contains the initialization of the app and its plugins as well as the basic logic for the sample interaction. It makes use of the Web integrations [`Custom Actions`](TODO: link to docs) to send a `redirect` action used to open a link in a new tab.
+The `app.ts` file contains the initialization of the app and its plugins as well as the basic logic for the sample interaction. It makes use of the Web integrations `Custom Actions` to send a `redirect` action used to open a link in a new tab.
+
+## About Jovo
+
+Jovo is the most popular development framework for voice, including platforms like Alexa, Google Assistant, and the web.
+
+-   [Jovo Website](https://jovo.tech/)
+-   [Documentation](https://jovo.tech/docs/)
+-   [Marketplace](https://www.jovo.tech/marketplace/)
+-   [Twitter](https://twitter.com/jovotech/)
+-   [Forum](https://community.jovo.tech/)
