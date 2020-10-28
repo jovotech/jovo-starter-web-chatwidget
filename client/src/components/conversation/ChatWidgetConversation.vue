@@ -70,6 +70,7 @@ export default class ChatWidgetConversation extends Vue {
   }
 
   mounted() {
+    window.addEventListener('resize', this.scrollToBottom);
     this.$client.on(ClientEvent.Request, this.onRequest);
     this.$client.on(ClientEvent.Reprompt, this.onReprompt);
     this.$client.on(ClientEvent.Action, this.onAction);
@@ -77,10 +78,16 @@ export default class ChatWidgetConversation extends Vue {
   }
 
   beforeDestroy() {
+    window.removeEventListener('resize', this.scrollToBottom);
     this.$client.off(ClientEvent.Request, this.onRequest);
     this.$client.off(ClientEvent.Reprompt, this.onReprompt);
     this.$client.off(ClientEvent.Action, this.onAction);
     this.$client.off(ClientEvent.RepromptLimitReached, this.onRepromptLimitReached);
+  }
+
+  scrollToBottom() {
+    const partContainer = this.$refs.partContainer as HTMLDivElement;
+    partContainer.scrollTop = partContainer.scrollHeight;
   }
 
   private onRequest(req: WebRequest) {
@@ -144,8 +151,7 @@ export default class ChatWidgetConversation extends Vue {
   private async onPartsChange() {
     // wait for dom changes
     await this.$nextTick();
-    const partContainer = this.$refs.partContainer as HTMLDivElement;
-    partContainer.scrollTop = partContainer.scrollHeight;
+    this.scrollToBottom();
   }
 }
 </script>
