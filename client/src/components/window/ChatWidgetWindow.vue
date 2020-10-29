@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col border border-gray-400 rounded-xl sm:w-96 shadow-xl">
-    <chat-widget-window-header class="flex-shrink-0 rounded-t-xl border-b" />
+    <chat-widget-window-header class="flex-shrink-0 rounded-t-xl border-b" @close="$emit('close')" />
     <chat-widget-window-body class="flex-1 overflow-y-auto" />
     <chat-widget-window-bottom ref="bottom" class="flex-shrink-0 rounded-b-xl border-t" />
   </div>

@@ -5,6 +5,7 @@
       class="block sm:hidden cursor-pointer hover:text-black-600 float-right"
       size="20"
       stroke-width="1"
+      @click="$emit('close')"
     />
   </div>
 </template>

@@ -13,6 +13,7 @@
         ref="window"
         v-show="isVisible"
         class="sm:mb-6 flex-1 overflow-y-hidden"
+        @close="isVisible = false"
       />
     </transition>
     <chat-widget-toggle-button
