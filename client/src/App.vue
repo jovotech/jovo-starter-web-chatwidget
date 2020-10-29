@@ -15,9 +15,10 @@ export default class App extends Vue {}
 </script>
 
 <style>
-@import 'assets/css/theme.css';
+@import 'assets/css/theme.pcss';
 
 #app {
+  -webkit-tap-highlight-color: transparent;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
