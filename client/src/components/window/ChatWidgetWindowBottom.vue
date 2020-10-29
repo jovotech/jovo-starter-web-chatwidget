@@ -8,12 +8,17 @@
       @keypress.enter.exact="sendText"
       autofocus
     />
-    <send-icon class="cursor-pointer" size="20" stroke-width="1" @click="sendText" />
+    <send-icon
+      class="cursor-pointer hover:text-black-600"
+      size="20"
+      stroke-width="1"
+      @click="sendText"
+    />
   </div>
 </template>
 
 <script lang="ts">
-import { RequestType, ClientEvent, WebRequest } from 'jovo-client-web-vue';
+import { RequestType, ClientEvent } from 'jovo-client-web-vue';
 import SendIcon from 'vue-feather-icons/icons/SendIcon';
 import { Component, Vue } from 'vue-property-decorator';
 
@@ -45,7 +50,7 @@ export default class ChatWidgetWindowBottom extends Vue {
     return this.$client.createRequest({ type: RequestType.Text, body: { text } }).send();
   }
 
-  private onRequest(req: WebRequest) {
+  private onRequest() {
     this.focusTextInput();
   }
 }

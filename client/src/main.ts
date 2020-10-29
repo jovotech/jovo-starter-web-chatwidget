@@ -1,4 +1,4 @@
-import JovoWebClientVue, { JovoWebClientVueConfig, Client } from 'jovo-client-web-vue';
+import JovoWebClientVue, { JovoWebClientVueConfig } from 'jovo-client-web-vue';
 import Vue from 'vue';
 import App from './App.vue';
 
@@ -15,7 +15,7 @@ Vue.use<JovoWebClientVueConfig>(JovoWebClientVue, {
     },
     repromptHandler: {
       enabled: false,
-    }
+    },
   },
 });
 
