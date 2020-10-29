@@ -96,23 +96,29 @@ export default class ChatWidgetConversation extends Vue {
     switch (req.request.type) {
       case RequestType.Text:
       case RequestType.TranscribedText:
+        if (!req.request.body.text) {
+          return;
+        }
         this.conversation.parts.push({
           type: 'request',
           subType: 'text',
-          value: req.request.body.text!,
+          value: req.request.body.text,
         });
         break;
       case RequestType.Audio:
+        if (!req.request.body.audio?.b64string) {
+          return;
+        }
         this.conversation.parts.push({
           type: 'request',
           subType: 'audio',
-          value: req.request.body.audio!.b64string,
+          value: req.request.body.audio.b64string,
         });
         break;
     }
   }
 
-  private onReprompt(actions: Action[]) {
+  private onReprompt() {
     this.includeOutput = false;
   }
 
