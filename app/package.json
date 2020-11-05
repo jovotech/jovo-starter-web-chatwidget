@@ -16,6 +16,8 @@
     "@types/express": "^4.17.6",
     "@types/jest": "^25.2.1",
     "@types/socket.io-client": "^1.4.32",
+    "cp-cli": "^2.0.0",
+    "del-cli": "^3.0.1",
     "gulp": "^4.0.2",
     "gulp-install": "^1.1.0",
     "gulp-run-command": "0.0.10",
@@ -33,7 +35,8 @@
     "tscw": "tsc --watch",
     "start:dev": "tsc-watch --onSuccess \"jovo run --timeout 60000\"",
     "tslint": "tslint -p tsconfig.json -c tslint.json",
-    "bundle": "gulp --gulpfile node_modules/jovo-framework/gulpfile.js build-ts --cwd ./",
+    "copyModels": "cp-cli ./models/ ./bundle/models",
+    "bundle": "del ./bundle && npm run copyModels && gulp --gulpfile node_modules/jovo-framework/gulpfile.js build-ts --cwd ./",
     "start": "cd ./dist && node index.js --webhook",
     "launch": "npm start -- --launch"
   },

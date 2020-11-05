@@ -32,17 +32,19 @@ Demo: [jovo.tech/demos/starter-web-chatwidget](https://www.jovo.tech/demos/start
 
     $ cd my-chatwidget
     ```
+
     Alternatively, you can clone this repository and run `npm install`.
 
+2.  **Start client (Vue.js)**
 
-2. **Start client (Vue.js)**
-   ```sh
-    $ cd client
+    ```sh
+     $ cd client
 
-    # Start Vue frontend
-    $ npm run serve
+     # Start Vue frontend
+     $ npm run serve
     ```
-3. **Start app (Jovo)**
+
+3.  **Start app (Jovo)**
     In a new tab:
 
     ```sh
@@ -51,19 +53,19 @@ Demo: [jovo.tech/demos/starter-web-chatwidget](https://www.jovo.tech/demos/start
     # Start Jovo development server
     $ jovo run
     ```
+
     The first time, `jovo run` will compile the TypeScript code. After making changes, make sure to compile with `npm run tsc` and then start the Jovo development server again.
 
-4. **Open the starter in your browser at `http://localhost:8080`.**
+4.  **Open the starter in your browser at `http://localhost:8080`.**
 
 ## How it works
 
 ![Jovo Web Client to App](img/jovo-web-client-to-app.png)
 
 This repository contains:
-* `app`: Backend logic built with the [Jovo Framework](https://github.com/jovotech/jovo-framework) using its [Web Platform integration](https://github.com/jovotech/jovo-framework/tree/master/jovo-platforms/jovo-platform-web).
-* `client`: Frontend built with [Vue.js](https://vuejs.org/) and [Tailwind CSS](https://tailwindcss.com/), communicating with the backend using the [Jovo Web Client for Vue.js](https://github.com/jovotech/jovo-framework/tree/master/jovo-clients/jovo-client-web-vue).
 
-
+- `app`: Backend logic built with the [Jovo Framework](https://github.com/jovotech/jovo-framework) using its [Web Platform integration](https://github.com/jovotech/jovo-framework/tree/master/jovo-platforms/jovo-platform-web).
+- `client`: Frontend built with [Vue.js](https://vuejs.org/) and [Tailwind CSS](https://tailwindcss.com/), communicating with the backend using the [Jovo Web Client for Vue.js](https://github.com/jovotech/jovo-framework/tree/master/jovo-clients/jovo-client-web-vue).
 
 ## Customization
 
@@ -80,13 +82,14 @@ The client is a Vue.js project that consists of a single component "ChatWidget" 
 The ChatWidget component implements a fully functioning chat body where the user can type in their request and receive a response from the Jovo app. handles the registration for multiple event listeners, namely `ClientEvent.Request`, `ClientEvent.Response`, and `ClientEvent.Action`.
 
 TODO: add links to docs and more info
-* `ClientEvent.Request`: triggered before the request is sent out to the Jovo app. In this case, it is used to display the user's input in the chat body.
-* `ClientEvent.Response`: triggered when the client receives the Jovo app's response. In this case, it is used to display the app's response in the chat body.
-* `ClientEvent.Action`: triggered when the app's response contains an action. In our case, we expect quick replies that are displayed as buttons on top of text input. It also listens for a custom action that opens a link to a new tab.
+
+- `ClientEvent.Request`: triggered before the request is sent out to the Jovo app. In this case, it is used to display the user's input in the chat body.
+- `ClientEvent.Response`: triggered when the client receives the Jovo app's response. In this case, it is used to display the app's response in the chat body.
+- `ClientEvent.Action`: triggered when the app's response contains an action. In our case, we expect quick replies that are displayed as buttons on top of text input. It also listens for a custom action that opens a link to a new tab.
 
 ### App
 
-The Jovo app the new [Jovo Web Platform integration](http://jovo.tech/marketplace/jovo-platform-web) as well as [NLP.js](https://www.jovo.tech/marketplace/jovo-nlu-nlpjs) as its NLU. It implements a simple interaction where the user can be redirected to the Jovo Framework's documentation.
+The Jovo app utilizes the new [Jovo Web Platform integration](http://jovo.tech/marketplace/jovo-platform-web) as well as [NLP.js](https://www.jovo.tech/marketplace/jovo-nlu-nlpjs) as its NLU. It implements a simple interaction where the user can be redirected to the Jovo Framework's documentation.
 
 #### Language Model
 
@@ -96,12 +99,23 @@ The language model consists of two intents, `HelloWorldIntent` and `YesIntent`, 
 
 The `app.ts` file contains the initialization of the app and its plugins as well as the basic logic for the sample interaction. It makes use of the Web integrations `Custom Actions` to send a `redirect` action used to open a link in a new tab.
 
+## Deployment
+
+You can host your Jovo app on almost any platform, whether you choose a hosting provider or to build your own Node.js-based HTTP server. Here are a few examples:
+
+| Name                                                                                                                                                                                                                     | Description                                 |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------- |
+| [AWS Lambda](https://github.com/jovotech/jovo-framework/blob/master/docs/configuration/hosting/aws-lambda.md './https://www.jovo.tech/docs/hosting/aws-lambda')                                                          | Run the voice app as AWS Lambda Function    |
+| [Google Cloud Functions](https://github.com/jovotech/jovo-framework/blob/master/docs/configuration/hosting/google-cloud-functions.md 'https://www.jovo.tech/docs/hosting/google-cloud-functions/google-cloud-functions') | Run the voice app on Google Cloud Functions |
+| [Azure Functions](https://github.com/jovotech/jovo-framework/blob/master/docs/configuration/hosting/azure-functions.md 'https://www.jovo.tech/docs/hosting/azure-functions')                                             | Run the voice app on Azure Functions        |
+| [Using nodejs built-in http server](https://github.com/jovotech/jovo-framework/blob/master/docs/configuration/hosting/http-host.md 'https://www.jovo.tech/docs/hosting/http-host')                                       | Run your app (almost) anywhere              |
+
 ## About Jovo
 
 Jovo is the most popular development framework for voice, including platforms like Alexa, Google Assistant, and the web.
 
--   [Jovo Website](https://jovo.tech/)
--   [Documentation](https://jovo.tech/docs/)
--   [Marketplace](https://www.jovo.tech/marketplace/)
--   [Twitter](https://twitter.com/jovotech/)
--   [Forum](https://community.jovo.tech/)
+- [Jovo Website](https://jovo.tech/)
+- [Documentation](https://jovo.tech/docs/)
+- [Marketplace](https://www.jovo.tech/marketplace/)
+- [Twitter](https://twitter.com/jovotech/)
+- [Forum](https://community.jovo.tech/)
