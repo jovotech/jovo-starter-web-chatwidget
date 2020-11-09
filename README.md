@@ -77,6 +77,8 @@ The following documentation will help you understand how the starter is structur
 
 The client is a Vue.js project that consists of a single component "ChatWidget" which is styled in Tailwind CSS.
 
+If you are new to Vue.js and want to develop your website starting with this project, you can take a look at the Vue.js guide [here](https://vuejs.org/v2/guide/). This will give you a quick start to how Vue.js works, so you can start creating right away.
+
 #### Component: ChatWidget
 
 The ChatWidget component implements a fully functioning chat body where the user can type in their request and receive a response from the Jovo app. handles the registration for multiple event listeners, namely `ClientEvent.Request`, `ClientEvent.Response`, and `ClientEvent.Action`.
@@ -103,20 +105,18 @@ The `app.ts` file contains the initialization of the app and its plugins as well
 
 ### Client
 
-If you are new to Vue.js and want to develop your website starting with this project, you can take a look at the Vue.js guide [here](https://vuejs.org/v2/guide/). This will give you a quick start to how Vue.js works, so you can start creating right away.
+> Take a look at the Vue deployment docs [here](https://cli.vuejs.org/guide/deployment).
 
-However, if you already have your own website and want to integrate the Jovo Chat Widget into your existing project, you can use the npm script `build` inside of the `client/` directory. This will produce a bundle in a dedicated `dist/` directory, containing the whole Vue.js client with minified HTML, CSS and JavaScript, ready for dynamic integration into any website.
-
-> You can also take a look at the Vue deployment docs [here](https://cli.vuejs.org/guide/deployment).
+To integrate the the Jovo Chat Widget into your existing project, you can use the npm script `build` inside of the `client/` directory. This will produce a bundle in a dedicated `dist/` directory, containing the whole Vue.js client with minified HTML, CSS and JavaScript, ready for dynamic integration into any website.
 
 ### App
 
 You can host your Jovo app on almost any platform, whether you choose a hosting provider or to build your own Node.js-based HTTP server. Here are a few examples:
 
-- [AWS Lambda](https://github.com/jovotech/jovo-framework/blob/master/docs/configuration/hosting/aws-lambda.md './https://www.jovo.tech/docs/hosting/aws-lambda')
-- [Google Cloud Functions](https://github.com/jovotech/jovo-framework/blob/master/docs/configuration/hosting/google-cloud-functions.md 'https://www.jovo.tech/docs/hosting/google-cloud-functions/google-cloud-functions')
-- [Azure Functions](https://github.com/jovotech/jovo-framework/blob/master/docs/configuration/hosting/azure-functions.md 'https://www.jovo.tech/docs/hosting/azure-functions')
-- [Using Node.js for your own server](https://github.com/jovotech/jovo-framework/blob/master/docs/configuration/hosting/http-host.md 'https://www.jovo.tech/docs/hosting/http-host')
+- [AWS Lambda](https://www.jovo.tech/docs/hosting/aws-lambda)
+- [Google Cloud Functions](https://www.jovo.tech/docs/hosting/google-cloud-functions)
+- [Azure Functions](https://www.jovo.tech/docs/hosting/azure-functions)
+- [Using Node.js for your own server](https://www.jovo.tech/docs/hosting/http-host)
 
 ## About Jovo
 
