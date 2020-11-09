@@ -101,14 +101,22 @@ The `app.ts` file contains the initialization of the app and its plugins as well
 
 ## Deployment
 
+### Client
+
+If you are new to Vue.js and want to develop your website starting with this project, you can take a look at the Vue.js guide [here](https://vuejs.org/v2/guide/). This will give you a quick start to how Vue.js works, so you can start creating right away.
+
+However, if you already have your own website and want to integrate the Jovo Chat Widget into your existing project, you can use the npm script `build` inside of the `client/` directory. This will produce a bundle in a dedicated `dist/` directory, containing the whole Vue.js client with minified HTML, CSS and JavaScript, ready for dynamic integration into any website.
+
+> You can also take a look at the Vue deployment docs [here](https://cli.vuejs.org/guide/deployment).
+
+### App
+
 You can host your Jovo app on almost any platform, whether you choose a hosting provider or to build your own Node.js-based HTTP server. Here are a few examples:
 
-| Name                                                                                                                                                                                                                     | Description                                 |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------- |
-| [AWS Lambda](https://github.com/jovotech/jovo-framework/blob/master/docs/configuration/hosting/aws-lambda.md './https://www.jovo.tech/docs/hosting/aws-lambda')                                                          | Run the voice app as AWS Lambda Function    |
-| [Google Cloud Functions](https://github.com/jovotech/jovo-framework/blob/master/docs/configuration/hosting/google-cloud-functions.md 'https://www.jovo.tech/docs/hosting/google-cloud-functions/google-cloud-functions') | Run the voice app on Google Cloud Functions |
-| [Azure Functions](https://github.com/jovotech/jovo-framework/blob/master/docs/configuration/hosting/azure-functions.md 'https://www.jovo.tech/docs/hosting/azure-functions')                                             | Run the voice app on Azure Functions        |
-| [Using nodejs built-in http server](https://github.com/jovotech/jovo-framework/blob/master/docs/configuration/hosting/http-host.md 'https://www.jovo.tech/docs/hosting/http-host')                                       | Run your app (almost) anywhere              |
+- [AWS Lambda](https://github.com/jovotech/jovo-framework/blob/master/docs/configuration/hosting/aws-lambda.md './https://www.jovo.tech/docs/hosting/aws-lambda')
+- [Google Cloud Functions](https://github.com/jovotech/jovo-framework/blob/master/docs/configuration/hosting/google-cloud-functions.md 'https://www.jovo.tech/docs/hosting/google-cloud-functions/google-cloud-functions')
+- [Azure Functions](https://github.com/jovotech/jovo-framework/blob/master/docs/configuration/hosting/azure-functions.md 'https://www.jovo.tech/docs/hosting/azure-functions')
+- [Using Node.js for your own server](https://github.com/jovotech/jovo-framework/blob/master/docs/configuration/hosting/http-host.md 'https://www.jovo.tech/docs/hosting/http-host')
 
 ## About Jovo
 
