@@ -8,9 +8,7 @@ export class OpenDocumentationOutput extends BaseOutput<RedirectIntroOutputOutpu
     const prompt = 'Do you want me to take you there?';
     return [
       {
-        message: this.$t(
-          `The content of this conversation is fully customizable. Our docs can show you how to update the app logic.`,
-        ),
+        message: `The content of this conversation is fully customizable. Our docs can show you how to update the app logic.`,
       },
       {
         message: prompt,
