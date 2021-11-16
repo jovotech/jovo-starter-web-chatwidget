@@ -1,6 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+@import '@jovotech/output-components-vue/dist/JovoOutputComponentsVue.css';
 @import 'tailwindcss/base';
-@import 'custom-base.pcss';
-
 @import 'tailwindcss/components';
-
 @import 'tailwindcss/utilities';
+
+
+@layer utilities {
+    @variants hover {
+        .scrollbar::-webkit-scrollbar {
+            @apply w-1 h-1;
+        }
+
+        .scrollbar::-webkit-scrollbar-track {
+        }
+
+        .scrollbar::-webkit-scrollbar-thumb {
+            @apply bg-primary rounded-full;
+        }
+
+        .scrollbar::-webkit-scrollbar-thumb:hover {
+            @apply bg-gray-800;
+        }
+
+        .scrollbar-invisible::-webkit-scrollbar {
+            @apply w-1 h-1;
+        }
+
+        .scrollbar-invisible::-webkit-scrollbar-track {
+        }
+
+        .scrollbar-invisible::-webkit-scrollbar-thumb {
+            @apply bg-transparent rounded-full;
+        }
+
+        .scrollbar-invisible::-webkit-scrollbar-thumb:hover {
+            @apply bg-transparent;
+        }
+    }
+}

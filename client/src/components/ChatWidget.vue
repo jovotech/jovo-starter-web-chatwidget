@@ -1,6 +1,13 @@
 <template>
   <div
-    class="flex flex-col fixed right-0.5 bottom-0.5 left-0.5 sm:right-2 sm:left-auto sm:bottom-2 sm:max-h-3/4"
+    class="
+      flex flex-col
+      fixed
+      right-0.5
+      bottom-0.5
+      left-0.5
+      sm:right-2 sm:left-auto sm:bottom-2 sm:max-h-3/4
+    "
     :class="[isVisible ? 'top-0.5 sm:top-auto' : '']"
   >
     <transition
@@ -28,7 +35,7 @@
 <script lang="ts">
 import ChatWidgetToggleButton from '@/components/ChatWidgetToggleButton.vue';
 import ChatWidgetWindow from '@/components/window/ChatWidgetWindow.vue';
-import { RequestType, ClientEvent, ActionType, Action } from 'jovo-client-web-vue';
+import { ClientEvent, InputType, NormalizedOutputTemplate } from '@jovotech/client-web-vue2';
 import { Component, Vue } from 'vue-property-decorator';
 
 @Component({
@@ -39,13 +46,13 @@ export default class ChatWidget extends Vue {
   isVisible = false;
 
   async mounted() {
-    this.$client.on(ClientEvent.Action, this.onAction);
+    this.$client.on(ClientEvent.Output, this.onOutput);
   }
 
   async handleToggle() {
     if (!this.$client.isInitialized) {
       await this.$client.initialize();
-      await this.$client.createRequest({ type: RequestType.Launch }).send();
+      await this.$client.send({ type: InputType.Launch });
     }
     this.isVisible = !this.isVisible;
     await this.$nextTick();
@@ -55,17 +62,13 @@ export default class ChatWidget extends Vue {
     }
   }
 
-  private onAction(action: Action) {
-    if (action.type === ActionType.Custom) {
-      switch (action.command) {
-        case 'redirect': {
-          setTimeout(() => {
-            window.open(action.value);
-          }, 800);
-          break;
-        }
-        default:
-      }
+  private onOutput(output: NormalizedOutputTemplate) {
+    // custom property just used for this example to redirect to a given website
+    const redirectTo = output.platforms?.web?.redirectTo;
+    if (typeof redirectTo === 'string' && redirectTo) {
+      setTimeout(() => {
+        window.open(redirectTo, '_blank');
+      }, 800);
     }
   }
 }

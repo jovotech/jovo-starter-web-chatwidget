@@ -1,13 +1,13 @@
-export type ConversationPartType = 'request' | 'response';
-export type ConversationPartSubType = 'text' | 'audio';
+import { Input, NormalizedOutputTemplate } from '@jovotech/client-web-vue2';
 
-export interface ConversationPart {
-  type: ConversationPartType;
-  subType: ConversationPartSubType;
-  value: string;
+export interface RequestConversationPart {
+  type: 'request';
+  data: Input;
 }
 
-export interface Conversation {
-  quickReplies: string[];
-  parts: ConversationPart[];
+export interface ResponseConversationPart {
+  type: 'response';
+  data: NormalizedOutputTemplate;
 }
+
+export type ConversationPart = RequestConversationPart | ResponseConversationPart;

@@ -1,13 +1,39 @@
 {
   "invocation": "my test app",
-  "intents": [
-    {
-      "name": "HelloWorldIntent",
-      "phrases": ["hi", "hello", "say hello", "say hello world"]
+  "version": "4.0",
+  "intents": {
+    "YesIntent": {
+      "phrases": [
+        "yes",
+        "yes please",
+        "sure"
+      ]
     },
-    {
-      "name": "YesIntent",
-      "phrases": ["yes", "yeah", "yup", "sure"]
+    "NoIntent": {
+      "phrases": [
+        "no",
+        "no thanks"
+      ]
     }
-  ]
+  },
+  "alexa": {
+    "interactionModel": {
+      "languageModel": {
+        "intents": [
+          {
+            "name": "AMAZON.CancelIntent",
+            "samples": []
+          },
+          {
+            "name": "AMAZON.HelpIntent",
+            "samples": []
+          },
+          {
+            "name": "AMAZON.StopIntent",
+            "samples": []
+          }
+        ]
+      }
+    }
+  }
 }
