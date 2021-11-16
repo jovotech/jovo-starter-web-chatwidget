@@ -64,7 +64,7 @@ export default class ChatWidget extends Vue {
 
   private onOutput(output: NormalizedOutputTemplate) {
     // custom property just used for this example to redirect to a given website
-    const redirectTo = output.platforms?.core?.redirectTo;
+    const redirectTo = output.platforms?.web?.redirectTo;
     if (typeof redirectTo === 'string' && redirectTo) {
       setTimeout(() => {
         window.open(redirectTo, '_blank');

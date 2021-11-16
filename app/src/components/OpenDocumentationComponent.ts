@@ -13,7 +13,7 @@ export class OpenDocumentationComponent extends BaseComponent {
       message: 'Great! Opening now...',
       listen: false,
       platforms: {
-        core: {
+        web: {
           // custom property used for this example
           redirectTo: 'https://v4.jovo.tech/docs',
         },
