@@ -1,63 +1,72 @@
-import { App } from 'jovo-framework';
-import { WebPlatform } from 'jovo-platform-web';
-import { NlpjsNlu } from 'jovo-nlu-nlpjs';
-import { FileDb } from 'jovo-db-filedb';
+import { App } from '@jovotech/framework';
+import { WebPlatform } from '@jovotech/platform-web';
+import { LangEn } from '@nlpjs/lang-en';
+import { NlpjsNlu } from '@jovotech/nlu-nlpjs';
+import { GlobalComponent } from './components/GlobalComponent';
+import { OpenDocumentationComponent } from './components/OpenDocumentationComponent';
+/*
+|--------------------------------------------------------------------------
+| APP CONFIGURATION
+|--------------------------------------------------------------------------
+|
+| All relevant components, plugins, and configurations for your Jovo app
+| Learn more here: v4.jovo.tech/docs/app-config
+|
+*/
 
-// ------------------------------------------------------------------
-// APP INITIALIZATION
-// ------------------------------------------------------------------
+const app = new App({
+  /*
+  |--------------------------------------------------------------------------
+  | Components
+  |--------------------------------------------------------------------------
+  |
+  | Components contain the Jovo app logic
+  | Learn more here: v4.jovo.tech/docs/components
+  |
+  */
 
-const app = new App();
+  components: [GlobalComponent, OpenDocumentationComponent],
 
-const webPlatform = new WebPlatform();
-webPlatform.use(
-  new NlpjsNlu(),
-);
+  /*
+  |--------------------------------------------------------------------------
+  | Plugins
+  |--------------------------------------------------------------------------
+  |
+  | Includes platforms, database integrations, third-party plugins, and more
+  | Learn more here: v4.jovo.tech/marketplace
+  |
+  */
 
-app.use(webPlatform, new FileDb());
+  plugins: [
+    // Add Jovo plugins here
+    new WebPlatform({
+      plugins: [
+        new NlpjsNlu({
+          languageMap: {
+            en: LangEn,
+          },
+        }),
+      ],
+    }),
+  ],
 
+  /*
+  |--------------------------------------------------------------------------
+  | Other options
+  |--------------------------------------------------------------------------
+  |
+  | Includes all other configuration options like logging
+  | Learn more here: v4.jovo.tech/docs/app-config
+  |
+  */
 
+  logging: true,
 
-// ------------------------------------------------------------------
-// APP LOGIC
-// ------------------------------------------------------------------
-
-app.setHandler({
-
-  LAUNCH() {
-    this.ask(
-      `The content of this conversation is fully customizable. ` +
-      `Our docs can show you how to update the app logic. ` +
-      `Do you want me to take you there?`
-    ).followUpState('TakeMeToTheDocs');
-    this.$webApp?.showQuickReplies([
-      'Yes',
-      'No'
-    ]);
-  },
-
-  Unhandled() {
-    return this.toIntent('LAUNCH');
-  },
-
-  TakeMeToTheDocs: {
-    YesIntent() {
-      this.$webApp?.addActions([
-        {
-          type: 'CUSTOM' as any,
-          command: 'redirect',
-          value: 'https://www.jovo.tech/docs/routing',
-        },
-      ]);
-      this.tell('Great! Opening now...');
+  routing: {
+    intentMap: {
+      'AMAZON.StopIntent': 'END',
     },
-
-    Unhandled() {
-      this.removeState();
-      this.tell('Alright!');
-    }
-  }
-
+  },
 });
 
 export { app };

@@ -4,7 +4,7 @@
       class="flex-shrink-0 rounded-t-xl border-b"
       @close="$emit('close')"
     />
-    <chat-widget-window-body class="flex-1 overflow-y-auto" />
+    <chat-widget-window-body class="flex-1 overflow-hidden" />
     <chat-widget-window-bottom ref="bottom" class="flex-shrink-0 rounded-b-xl border-t" />
   </div>
 </template>

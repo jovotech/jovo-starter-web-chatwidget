@@ -1,7 +1,5 @@
 module.exports = {
   future: {
-    defaultLineHeights: true,
-    standardFontWeights: true,
     removeDeprecatedGapUtilities: true,
     purgeLayersByDefault: true,
   },
@@ -11,6 +9,9 @@ module.exports = {
       sans: ['Roboto', 'sans-serif'],
     },
     extend: {
+      colors: {
+        primary: '#434A65',
+      },
       inset: {
         '0.5': '0.5rem',
         '1': '1rem',
@@ -21,9 +22,6 @@ module.exports = {
         '80': '20rem',
         '88': '22rem',
         '96': '24rem',
-      },
-      backgroundColor: {
-        primary: '#434A65',
       },
       maxWidth: {
         '1/4': '25%',
