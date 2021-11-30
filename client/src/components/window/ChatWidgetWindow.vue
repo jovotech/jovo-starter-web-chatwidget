@@ -5,19 +5,19 @@
       @close="$emit('close')"
     />
     <chat-widget-window-body class="flex-1 overflow-hidden" />
-    <chat-widget-window-bottom ref="bottom" class="flex-shrink-0 rounded-b-xl border-t" />
+    <chat-widget-window-footer ref="bottom" class="flex-shrink-0 rounded-b-xl border-t" />
   </div>
 </template>
 
 <script lang="ts">
 import ChatWidgetWindowHeader from '@/components/window/ChatWidgetWindowHeader.vue';
 import ChatWidgetWindowBody from '@/components/window/ChatWidgetWindowBody.vue';
-import ChatWidgetWindowBottom from '@/components/window/ChatWidgetWindowBottom.vue';
+import ChatWidgetWindowFooter from '@/components/window/ChatWidgetWindowFooter.vue';
 import { Component, Vue } from 'vue-property-decorator';
 
 @Component({
   name: 'chat-widget-window',
-  components: { ChatWidgetWindowHeader, ChatWidgetWindowBody, ChatWidgetWindowBottom },
+  components: { ChatWidgetWindowHeader, ChatWidgetWindowBody, ChatWidgetWindowFooter },
 })
 export default class ChatWidgetWindow extends Vue {
   focusTextInput() {

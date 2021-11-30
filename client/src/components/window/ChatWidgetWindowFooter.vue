@@ -27,10 +27,10 @@ import { ClientEvent, InputType } from '@jovotech/client-web-vue2';
 import { Component, Vue } from 'vue-property-decorator';
 
 @Component({
-  name: 'chat-widget-window-bottom',
+  name: 'chat-widget-window-footer',
   components: {},
 })
-export default class ChatWidgetWindowBottom extends Vue {
+export default class ChatWidgetWindowFooter extends Vue {
   inputValue = '';
 
   mounted() {
