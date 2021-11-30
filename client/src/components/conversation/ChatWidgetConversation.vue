@@ -1,23 +1,12 @@
 <template>
-  <div class="flex flex-col flex-grow">
-    <div
-      ref="partContainer"
-      class="
-        flex-grow flex flex-col
-        space-y-4
-        px-6
-        py-4
-        overflow-y-scroll
-        scrollbar-invisible
-        hover:scrollbar
-      "
-    >
-      <chat-widget-conversation-part
-        v-for="(part, index) in conversationPartsWithQuickRepliesOnlyInLast"
-        :key="index"
-        :part="part"
-      />
-    </div>
+  <div
+    class="flex-grow flex flex-col space-y-4 px-6 py-4 overflow-y-scroll scrollbar-invisible hover:scrollbar"
+  >
+    <chat-widget-conversation-part
+      v-for="(part, index) in conversationPartsWithQuickRepliesOnlyInLast"
+      :key="index"
+      :part="part"
+    />
   </div>
 </template>
 
@@ -54,8 +43,8 @@ export default class ChatWidgetConversation extends Vue {
   }
 
   scrollToBottom() {
-    const partContainer = this.$refs.partContainer as HTMLDivElement;
-    partContainer.scrollTop = partContainer.scrollHeight;
+    if (!(this.$el instanceof HTMLDivElement)) return;
+    this.$el.scrollTop = this.$el.scrollHeight;
   }
 
   private async onRequest(req: ClientRequest) {
