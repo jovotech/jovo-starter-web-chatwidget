@@ -13,15 +13,15 @@ module.exports = {
         primary: '#434A65',
       },
       inset: {
-        '0.5': '0.5rem',
-        '1': '1rem',
-        '2': '2rem',
+        0.5: '0.5rem',
+        1: '1rem',
+        2: '2rem',
       },
       spacing: {
-        '72': '18rem',
-        '80': '20rem',
-        '88': '22rem',
-        '96': '24rem',
+        72: '18rem',
+        80: '20rem',
+        88: '22rem',
+        96: '24rem',
       },
       maxWidth: {
         '1/4': '25%',
