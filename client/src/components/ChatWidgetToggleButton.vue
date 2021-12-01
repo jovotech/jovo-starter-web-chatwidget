@@ -1,17 +1,6 @@
 <template>
   <button
-    class="
-      bg-primary
-      w-16
-      h-16
-      flex
-      items-center
-      justify-center
-      rounded-full
-      text-white
-      shadow-xl
-      focus:outline-none
-    "
+    class="bg-primary w-16 h-16 flex items-center justify-center rounded-full text-white shadow-xl focus:outline-none"
     @click="$emit('click')"
   >
     <transition

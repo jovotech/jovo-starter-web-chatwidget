@@ -10,9 +10,9 @@
 </template>
 
 <script lang="ts">
-import ChatWidgetWindowHeader from '@/components/window/ChatWidgetWindowHeader.vue';
 import ChatWidgetWindowBody from '@/components/window/ChatWidgetWindowBody.vue';
 import ChatWidgetWindowFooter from '@/components/window/ChatWidgetWindowFooter.vue';
+import ChatWidgetWindowHeader from '@/components/window/ChatWidgetWindowHeader.vue';
 import { Component, Vue } from 'vue-property-decorator';
 
 @Component({

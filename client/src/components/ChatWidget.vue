@@ -1,14 +1,9 @@
 <template>
   <div
-    class="
-      flex flex-col
-      fixed
-      right-0.5
-      bottom-0.5
-      left-0.5
-      sm:right-2 sm:left-auto sm:bottom-2 sm:max-h-3/4
-    "
-    :class="[isVisible ? 'top-0.5 sm:top-auto' : '']"
+    :class="[
+      'flex flex-col fixed right-0.5 bottom-0.5 left-0.5 sm:right-2 sm:left-auto sm:bottom-2 sm:max-h-3/4',
+      isVisible ? 'top-0.5 sm:top-auto' : '',
+    ]"
   >
     <transition
       enter-active-class="transition-opacity duration-300"
