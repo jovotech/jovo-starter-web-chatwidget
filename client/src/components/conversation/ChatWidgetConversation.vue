@@ -1,6 +1,8 @@
 <template>
   <div
-    class="flex-grow flex flex-col space-y-4 px-6 py-4 overflow-y-scroll scrollbar-invisible hover:scrollbar"
+    :class="[
+      'flex-grow flex flex-col space-y-4 px-6 py-4 overflow-y-scroll scrollbar-invisible hover:scrollbar',
+    ]"
   >
     <chat-widget-conversation-part
       v-for="(part, index) in conversationPartsWithQuickRepliesOnlyInLast"
@@ -48,6 +50,10 @@ export default class ChatWidgetConversation extends Vue {
   }
 
   private async onRequest(req: ClientRequest) {
+    // Do not show the LAUNCH bubble
+    if (req.input?.type === 'LAUNCH') {
+      return;
+    }
     this.conversationParts.push({
       type: 'request',
       data: req.input || {},
